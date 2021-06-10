@@ -3,7 +3,9 @@
 ![preview](https://raw.githubusercontent.com/langzhou/toy-theme-for-siyuan/main/preview.png)
 
 这是一款「玩具」主题，将页面布局和配色分离，通过简单的配置即可快速实现多种主题样式效果。
-目前支持的效果：
+
+目前支持的配置：
+- 独立的配色文件
 - 全屏下自动隐藏顶部工具栏
 - 设置左边栏背景色
 - 设置左边栏背景图
