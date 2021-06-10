@@ -1,0 +1,899 @@
+/******* Theme for SiYuan Note ************
+1. 本样式仅在16px字号设置下进行有限场景的测试，不能保证所有页面均完美呈现。如果遇到相关功能或样式问题，请重置为官方主题后再确认问题是否重现。
+2. 标注为「实验功能」的部分请谨慎开启使用。
+3. 通过更改 import 参数实现配色方案调整。
+/****************************************/
+
+/* 引入配色方案 */
+@import url("yinxiang.css");
+
+
+
+/************** 一、页面框架与控件 ***********************/
+
+/**** 顶部工具栏 toolbar ****/
+.toolbar{
+    background-color:   var(--dock-background);
+    border-bottom:      var(--dock-border);
+}
+/**** 实验功能：全屏下自动隐藏顶部工具栏 ****
+ 1）需要将 min-height 和 min-width 设置成自己电脑全屏时的分辨率
+ 2）如果需要鼠标悬浮时显示，请将.toolbar{height:0px;}设置为一个较小的高度值，如 8px
+****
+@media only screen and (min-height: 900px) and (min-width: 1440px)
+{
+    .toolbar{ height: 0px; transition: height 400ms ease 0s; }
+    .toolbar > div{  visibility: hidden; }
+    .toolbar:hover{  height: 30px; transition: height 400ms ease 0s; }
+    .toolbar:hover >div{  visibility: visible; }
+}
+/**** 实验功能代码结束 ****/
+
+/**** 停靠栏 dock ****/
+#dockLeft, #dockRight, #dockTop, #dockBottom{ background-color: var(--dock-background); }
+#dockLeft   { border-right:  var(--dock-border); }
+#dockRight  { border-left:   var(--dock-border); }
+#dockTop    { border-bottom: var(--dock-border); }
+#dockBottom { border-top:    var(--dock-border); }
+
+/**** 边栏 column ****/
+/* 边栏面板 */
+
+/* 边栏标题栏 */
+.block__icons{
+    background-color: var(--b3-theme-surface);
+    color: var(--b3-theme-on-surface);
+}
+/* 边栏列表项 */
+.b3-list-item, .b3-list-item__text{
+    color: var(--b3-theme-on-surface);
+}
+
+/* 边栏搜索 */
+.search__label .b3-form__icon-input{
+    background-color: var(--b3-theme-surface);
+}
+/* 边栏分割线 */
+.layout__resize--lr:after{
+    background-color: var(--column-border);
+}
+
+/* 左边栏 */
+/**** 实验功能：左边栏背景色 ****
+ 1）在配色文件中设置背景色及文字颜色
+ 2）需要关闭左边栏背景图及毛玻璃效果
+*****/
+.fn__flex-shrink, .fn__flex-shrink .block__icons{
+    background-color: var(--left-sidebar-background);
+    color: var(--left-sidebar-color);
+}
+.fn__flex-shrink .b3-list-item__text,.fn__flex-shrink .b3-list-item__graphic,.toolbar__item, .dock__item{
+    color: var(--left-sidebar-color);
+}
+.fn__flex-shrink div{ background: transparent;}
+/**** 左边栏背景色 代码结束 ****/
+
+/**** 实验功能：开启左边栏背景图 ****
+ 1）需要在配色文件中设置背景图
+ 2）需要关闭左边栏背景色及毛玻璃效果
+****
+body{
+    background-image: var(--background-image);
+    background-position: center top;
+	background-size: cover;
+}
+.toolbar,#dockLeft, #dockRight, #dockTop, #dockBottom{
+    background: transparent;
+}
+.fn__flex-shrink div{
+    background: transparent;
+}
+.fn__flex-shrink {
+    position: relative;
+	overflow: hidden;
+	z-index: 2;
+	box-sizing: border-box;
+} 
+.fn__flex-shrink::before{
+    content: '';
+	position: absolute;
+	top: 0;	left: 0; right: 0;	bottom: 0;
+	-webkit-filter: blur(var(--blur-value));
+	-moz-filter: blur(var(--blur-value));
+	-ms-filter: blur(var(--blur-value));
+	-o-filter: blur(var(--blur-value));
+	filter: blur(var(--blur-value));
+	z-index: -3;   
+	background-image: var(--background-image);  
+	background-position: center top;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+#layouts > .fn__flex-1 > .fn__flex-column ::-webkit-scrollbar{ width: 6px;}
+#layouts > .fn__flex-1 > .fn__flex-column ::-webkit-scrollbar-thumb{ background-color: rgba(23, 155, 147, 0.13);}
+#layouts > .fn__flex-1 > .fn__flex-column ::-webkit-scrollbar-thumb:hover{ background-color: rgba(20, 20, 20, 0.13);}
+/*********** 开启左边栏背景图 代码结束 ***********/
+
+/**** 反链面板 ****/
+
+/**** 关系图 ****/
+
+
+/**** 菜单 ****/
+/* 右键菜单 */
+.b3-menu{
+    padding: 10px 0px;
+}
+/* 菜单项 */
+.b3-menu__item{
+    padding: 4px 16px 4px 16px;
+    color: var(--b3-theme-on-surface);
+}
+/* 菜单分割线 */
+.b3-menu__separator{
+    height: 1px;
+    margin: 6px 0;
+}
+/* 菜单项选中状态 */
+.b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom), .b3-menu__item--current{
+    border-radius: 0px;
+}
+.b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom)>.b3-menu__label, .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom)>.b3-menu__accelerator, .b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom)>.b3-menu__icon, .b3-menu__item--current>.b3-menu__label, .b3-menu__item--current>.b3-menu__accelerator, .b3-menu__item--current>.b3-menu__icon{
+    color: var(--b3-theme-on-background);
+}
+
+/*二级菜单*/
+.b3-menu__submenu{
+    box-shadow: var(--b3-point-shadow);
+    margin: 2px;
+    border: none !important;
+    border-radius: 2px !important;
+}
+/* 菜单中文字描述 */
+.b3-menu__item--readonly{
+    line-height: 1.7em;
+}
+
+/* 字体样式设置弹框：调大间距，增大按钮 */
+.protyle-font div{
+    padding: 4px 0;
+}
+.b3-color__square{
+    margin-right: 6px;
+    height: 22px;
+    width: 22px;
+    line-height: 22px;
+    border-radius: 2px;
+}
+.b3-text-filed[readonly]{
+    border: none;
+}
+
+/**** Switch 开关 ****/
+/* 未开启状态 */
+.b3-switch:after{
+    background-color: var(--switch-uncheck-color);
+    border-color: var(--switch-uncheck-color);
+}
+/**** 弹框 ****/
+/* 弹出设置框，如超级链接设置 */
+.protyle-util{
+    padding: 10px;
+}
+
+/**** 反链浮窗 ****/
+/* 实验功能：优化反链浮窗面板的显示样式 */
+.block__popover .protyle-breadcrumb__bar{
+}
+.block__popover .protyle-breadcrumb__bar:hover{
+}
+.block__popover .protyle-breadcrumb:hover .protyle-breadcrumb__item,.block__popover .protyle-breadcrumb:hover .protyle-breadcrumb__arrow{
+    opacity: 1; /*悬浮时显示完整面包屑*/
+    transition: var(--common-transition);
+}
+.block__popover .protyle-breadcrumb__item:not(:first-child),.block__popover .protyle-breadcrumb__arrow:not(:first-child){
+    opacity: 0;
+}
+.block__popover .protyle-breadcrumb__item:first-child{
+    font-weight: bold; /*文件名加粗*/
+}
+
+/*弱化右侧三点菜单图标*/
+.block__popover .protyle-breadcrumb .b3-tooltips svg{
+    opacity: 0.2;
+    float: none;
+    padding: 0;
+} 
+/****** 实验功能结束 *******/
+
+
+/********文档预览模式 ********/
+/*预览工具栏*/
+.protyle-preview__action{
+     background-color: var(--b3-theme-background);
+}
+.protyle-preview__action button{
+    padding: 5px 20px;
+    font-weight: bold;
+    border-radius: 100px;
+}
+
+/**** 滚动条 ****/
+/* 通用滚动条 */
+::-webkit-scrollbar { width: 8px;}
+::-webkit-scrollbar-thumb{ background-color:var(--b3-scroll-color); border-radius: 30px; }
+::-webkit-scrollbar-thumb:hover{  background-color: var(--scrollbar-hover-background);}
+
+/* 边栏滚动条 */
+#layouts>.fn__flex-1>.fn__flex-column ::-webkit-scrollbar{ width: 6px;}
+#layouts>.fn__flex-1>.fn__flex-column ::-webkit-scrollbar-thumb{  background-color: var(--column-scrollbar-background); }
+#layouts>.fn__flex-1>.fn__flex-column ::-webkit-scrollbar-thumb:hover{ background-color: var(--column-scrollbar-hover-background); }
+
+/************** 二、文档编辑区 **************************/
+
+/**** 页签栏 ****/
+/* 通用设置 */
+.layout-tab-bar{
+    border-bottom: var(--dock-border);
+    padding: 0;
+}
+/*清除页签栏边框对侧边栏的影响*/
+.layout-tab-bar:empty{
+    border-bottom: none;
+}
+/* 清除标题过长时渐变效果 */
+.layout-tab-bar .item__text::after,.layout-tab-bar .item--focus .item__text::after,.layout-tab-bar .item:hover:not(.item--focus) .item__text::after{
+    background: transparent;
+}
+/* 标题过长时...表示 */
+.layout-tab-bar .item__text{
+    text-overflow:ellipsis;
+    padding: 0 2px; 
+}
+/* 隐藏关闭按钮，悬浮时展现 */
+.layout-tab-bar .item__close{
+    opacity: 0;
+    width:   0;
+    height:  0;
+    margin:  0;
+    transition: all 300ms ease 0s;
+}
+.layout-tab-bar .item:hover .item__close{
+    opacity: 1;
+    width:   8px;
+    height:  8px;
+    margin: 0 4px;;
+}
+/** 页签项包含3种样式，使用时需要注释另一种样式 **/
+/* 样式 1：官方默认 
+需要将页签栏颜色设置为与背景色不同
+*
+.layout-tab-bar{
+    border: none;
+}
+.layout-tab-bar .item{
+    padding: 8px;     
+}
+/* 样式 1 代码结束 */
+
+/* 样式 2：下划线 
+需要将页签栏颜色设置为与背景色相同
+*/
+.layout-tab-bar .item{
+    padding: 0 8px; 
+    background-color: transparent;    
+}
+.layout-tab-bar .item--focus .item__text{
+    border-color: var(--b3-theme-primary);
+    opacity: 1;
+}
+.layout-tab-bar .item__text{
+    border-bottom: 2px solid transparent;
+    padding: 8px;
+    text-overflow:ellipsis;
+    opacity: 0.6;
+}
+/* 样式 2 代码结束 */
+
+/* 样式 3：圆点 *
+.layout-tab-bar{
+    border: none;
+    padding-left: 10px;
+}
+.layout-tab-bar .item{
+    border-radius: 40px;
+    margin: 6px 0px 4px 0px;
+    padding: 4px;
+    border-bottom: none;
+    background: transparent;
+}
+.layout-tab-bar .item__text{
+    padding: 0 0 0 15px;
+    color: var(--b3-theme-on-background);
+    text-overflow:ellipsis;
+    opacity: 0.6;
+}
+.layout__wnd--active .layout-tab-bar .item--focus .item__text{
+    color: var(--b3-theme-on-background);
+    border-color: transparent;
+    opacity: 1;
+}
+.layout-tab-bar .item__close{
+    margin-right: 10px !important;
+}
+
+.layout-tab-bar .item--focus .item__text::after{
+    background: transparent;
+    background-color: #1295c9;
+    position: absolute;
+    width:  4px;
+    height: 4px;
+    border-radius: 4px;
+    border: 1px solid var(--b3-theme-background);
+    box-shadow: 0 0 1px 1px #1295c9;
+    top:    8px;
+    left:   4px;
+}
+.layout-tab-bar .item--unupdate.item--focus .item__text::after{
+    background-color: #2ba81a;
+    border: 1px solid var(--b3-theme-background);
+    box-shadow: 0 0 1px 1px #2ba81a;
+}
+.layout-tab-bar .item--unupdate.item--focus{
+    color: var(--b3-theme-on-background) !important;
+}
+.layout-tab-bar .item--unupdate{
+    font-style: normal;
+}
+/* 样式 3 代码结束 */
+
+/**** 面包屑 ****/
+/* 设置编辑区的面包屑样式，浮窗中的面包屑不受影响 */
+/* 样式 1：透明背景 *
+.layout__center .protyle-breadcrumb{
+    background: transparent;
+}
+.layout__center .protyle-breadcrumb__bar{
+    background-color: var(--b3-theme-surface);
+    border-radius: 100px;
+    padding: 4px 6px;
+}
+/* 样式 1 代码结束 */
+
+/* 样式 2：非透明背景 *
+.layout__center .protyle-breadcrumb{
+    background:  var(--b3-theme-background);
+}
+.layout__center .protyle-breadcrumb__bar{
+    background-color: var(--b3-theme-surface);
+    border-radius: 100px;
+    padding: 4px 6px;
+}
+/* 样式 2 代码结束 */
+
+/**** 浮出工具栏 ****/
+.protyle-toolbar{
+    border-radius: 30px;
+    padding: 1px 10px;
+    z-index: 100;
+}
+
+/**** 页面标题 ****/
+
+/**** 头图 ****/
+
+/**** 块图标 ****/
+/* 减淡块图标颜色 */
+.protyle-gutters svg {
+    color: var(--b3-scroll-color);
+}
+/* 增加块图标悬浮时背景色 */
+.protyle-gutters button:hover svg{
+    color: var(--b3-theme-primary);
+}
+.protyle-gutters button{
+    padding: 2px 0 0 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    margin-left:  3px;
+    line-height: 20px;
+    background-color: var(--b3-theme-background); /* 强制块图标使用背景色，以避免在超级块等场景下显示不清楚 */
+}
+.protyle-gutters:hover button {
+    background-color: var(--gutters-hover-background); /* 采用非透明色，避免在超级块等场景下显示不清楚 */
+}
+
+/* 调整设置行高后的块图标整体位置偏移 */
+.protyle-gutters{
+    margin: 0.625em 0;
+}
+/**** 块属性 ****/
+/* 备注 */
+.protyle-attr--memo{
+    width: inherit; /* 展示备注信息 */
+}
+/**** 全屏模式 ****/
+/**** 预览模式 ****/
+.protyle-preview__action{
+    background-color: var(--b3-theme-background);
+}
+.protyle-preview__action button{
+   padding: 5px 20px;
+   font-weight: bold;
+   border-radius: 100px;
+}
+.protyle-preview__action button.protyle-preview__action--current{
+   background-color: var(--b3-theme-primary);
+   color: var(--b3-theme-surface);
+}
+
+/**** 其他 ****/
+/* 大文件分页加载条 */
+.protyle-scroll{
+    opacity: 0;
+    transition: var(--page-scrollbar-transition);
+}
+.protyle-scroll:hover{
+    visibility: visible;
+    opacity: 1;
+}
+
+/* 编辑器光标颜色 */
+.protyle-wysiwyg{
+    caret-color:var(--b3-theme-primary);
+}
+/* 文本选中样式 */
+.protyle-wysiwyg ::selection{ 
+    background-color: var(--text-selection-background);
+    color: var(--text-selection-color);
+}
+/* 实验功能：清除鼠标划选区域*/
+.protyle-select{
+    background-color: transparent;
+}
+
+/************** 三、编辑器行内样式 ***********************/
+
+/**** 双向链接、块引用 ****/
+/* 样式一：下划线 */
+.protyle-wysiwyg [data-node-id] span[data-type="block-ref"]{
+    border-bottom: 1px dashed var(--b3-theme-primary);
+    padding: 2px 0;
+    margin:  0px 2px;
+}
+.protyle-wysiwyg [data-node-id] span[data-type="block-ref"]:hover{
+   background-color: var(--b3-theme-primary-lightest);
+}
+/* 样式一 代码结束 */
+
+/* 样式二：背景色 *
+.protyle-wysiwyg [data-node-id] span[data-type="block-ref"]{
+    border-bottom: none;
+    background-color: var(--b3-theme-primary-lightest);
+    padding:  1px 2px ;
+    margin: 0px 2px;
+    border-radius: 1px;
+}
+.protyle-wysiwyg [data-node-id] span[data-type="block-ref"]:hover{
+   background-color: var(--b3-theme-primary-lighter);
+}
+/* 样式二 代码结束 */
+/**** 超级链接 ****/
+.b3-typography a,.protyle-wysiwyg [data-node-id] span[data-type="a"]{
+    color: var(--b3-protyle-inline-link-color);
+    margin: 0 1px;
+    text-decoration: none;
+    padding: 2px 0;
+}
+.b3-typography a:hover,.protyle-wysiwyg [data-node-id] span[data-type="a"]:hover{
+    border-bottom: 1px solid inherit;
+}
+
+/**** 粗体、斜体 ****/
+/* 颜色卡片内的粗体继承卡片颜色 */
+[style*="background-color"] strong, [style*="background-color"] em{
+    color: inherit;
+}
+
+/**** 下划线、删除线 ****/
+[style*="background-color"] s{
+    color: inherit;
+}
+.protyle-wysiwyg u, .b3-typography u{
+    text-decoration: none;
+    border-bottom: 1px solid var(--b3-theme-on-background);
+    border-color: inherit;
+    padding: 2px 0;
+}
+
+/**** 高亮 ****/
+.b3-typography mark, .protyle-wysiwyg mark{
+    border-radius: 2px;
+    padding: 1px 2px;
+}
+/**** 行内代码 ****/
+.b3-typography code:not(.hljs), .protyle-wysiwyg code:not(.hljs){
+    font-size: 90%;
+    margin:  0 1px;
+    color: var(--inline-code-color);
+}
+/**** KBD ****/
+.b3-typography kbd, .protyle-wysiwyg kbd{
+    font-size: 85%;
+    margin:  0 1px;
+}
+/**** 数学公式 ****/
+
+/**** 图片 ****/
+.b3-typography img, .protyle-wysiwyg img{
+    border-radius: 4px;
+}
+/**** 标签 ****/
+/* 红色标签 */
+span[data-type="tag"][data-content="紧急"],span[data-type="tag"][data-content="高优先级"],span[data-type="tag"][data-content="待办"],span[data-type="tag"][data-content="重要"],span[data-type="tag"][data-content="高"],span[data-type="tag"][data-content="注意"],span[data-type="tag"][data-content="问题"]{
+    background-color: var(--b3-card-error-background);
+    color: var(--b3-card-error-color) !important;
+    border: none !important;
+    font-size: 90%;
+    padding: 0 4px;
+    margin:  0 2px;
+    border-radius: 2px;
+}
+/* 橙色标签 */
+span[data-type="tag"][data-content="TODO"],span[data-type="tag"][data-content="todo"],span[data-type="tag"][data-content="待办"],span[data-type="tag"][data-content="中"],span[data-type="tag"][data-content="中优先级"],span[data-type="tag"][data-content="NOTE"]{
+    background-color: var(--b3-card-warning-background);
+    color: var(--b3-card-warning-color) !important;
+    border: none !important;
+    font-size: 90%;
+    padding: 0 4px;
+    margin:  0 2px;
+    border-radius: 2px;
+}
+/* 绿色标签 */
+span[data-type="tag"][data-content="完成"],span[data-type="tag"][data-content="低"],span[data-type="tag"][data-content="低优先级"]{
+    background-color: var(--b3-card-success-background);
+    color: var(--b3-card-success-color) !important;
+    border: none !important;
+    font-size: 90%;
+    padding: 0 4px;
+    margin:  0 2px;
+    border-radius: 2px;
+}
+
+/**** 颜色卡片 ****/
+/* 超级块内颜色卡片增加padding */
+.sb div[data-node-id][style*="background-color"]{
+    padding: 8px 10px;
+}
+/* 嵌套内的颜色卡片恢复正常padding */
+.sb div[data-node-id][style*="background-color"] div[data-node-id][style*="background-color"] {
+    padding: var(--block-padding);
+}
+/* 颜色卡片内的块引用字体颜色与卡片保持一致 */
+.protyle-wysiwyg [style*="background-color"] span[data-type="block-ref"]{
+    color: inherit;
+    border-color: inherit;
+ }
+ /* 颜色卡片内的圆点颜色与卡片保持一致 */
+.protyle-wysiwyg [data-node-id][style*="background-color"] .protyle-action {
+    color:inherit !important;
+}
+
+
+/**** 折叠 ****/
+/* 消除官方折叠时高度固定为 24px 的设置，因为这样的设置改变字号和行高后会产生问题 */
+.protyle-wysiwyg [data-node-id][fold="1"]:not(.li){
+    height:  var(--line-height) !important;
+}
+/* 调整折叠时段落样式 */
+.protyle-wysiwyg [data-type="NodeParagraph"][fold="1"]{
+    padding-left: 18px;
+    opacity: 1 !important;
+}
+/* 段落折叠后添加三角形标识 */
+.protyle-wysiwyg [data-type="NodeParagraph"][fold="1"]:after{
+    content: "";
+    background-color: var(--b3-theme-on-background);
+    width:  12px;
+    height: var(--line-height);
+    position: absolute;
+    left:   4px;
+    top:    var(--padding-top-bottom);
+    -webkit-mask:   url(src/iconTriangle.svg) no-repeat;
+    mask:           url(src/iconTriangle.svg) no-repeat;
+    -webkit-mask-size:  100% 100%;
+    mask-size:          100% 100%;
+}
+
+/* 调整折叠时引述块样式 */
+.protyle-wysiwyg [data-type="NodeBlockquote"][fold="1"]{
+    margin-left  : 0 !important;
+    margin-right : 0 !important;
+}
+/* 调整折叠时引述块下列表及段落样式 */
+.protyle-wysiwyg [data-type="NodeBlockquote"][fold="1"] .protyle-action{
+   display: none; /* 隐藏大纲圆点 */
+}
+.protyle-wysiwyg [data-type="NodeBlockquote"][fold="1"]  div{
+    margin-left:  0 !important;
+    margin-right: 0 !important;
+    margin:       0 !important;
+    padding:      0 !important;
+    border:none;
+}
+
+/* 调整折叠时大纲、列表样式 */
+.protyle-wysiwyg [data-type="NodeList"][fold="1"]{
+    height: calc( var(--line-height) + var(--padding-top-bottom) * 2 ) !important; 
+}
+.protyle-wysiwyg [data-type="NodeList"][fold="1"] div{
+    padding-top:    0 !important;
+    padding-bottom: 0 !important;
+    margin-top:     0 !important;
+    margin-bottom:  0 !important;
+}
+.protyle-wysiwyg [data-type="NodeList"][fold="1"]>[data-type="NodeListItem"]{
+    padding-top: var(--padding-top-bottom) !important;
+    padding-bottom: var(--padding-top-bottom) !important;
+}
+
+/************** 四、排版 **************************/
+/**** 整体设置 ****/
+.b3-typography, .protyle-wysiwyg [data-node-id]{
+    line-height: var(--line-height);
+    letter-spacing: 0px; /* 字间距 */
+    word-spacing:   0px; /* 词间距 */
+    word-break: normal;
+    word-wrap:  break-word;
+}
+
+/* 段落及通用块 */
+.b3-typography p, .b3-typography [data-node-id], .protyle-wysiwyg p, .protyle-wysiwyg [data-node-id]{
+    margin:      var(--block-margin);
+    padding:     var(--block-padding);
+    line-height: var(--line-height);
+}
+
+/**** 超级块、横排 ****/
+/*** 调整超级块中元素间距 ***/
+.protyle-wysiwyg .sb div[data-node-id]{
+    margin: 4px;
+    border-radius: 3px;
+}
+.protyle-wysiwyg [data-node-id].sb[data-sb-layout="col"] .sb,.protyle-wysiwyg [data-node-id].sb[data-sb-layout="row"] .sb{
+    margin:4px;
+}
+/**** 嵌入块 ****/
+
+/**** 标题 ****/
+.b3-typography .h1,.b3-typography h1,.b3-typography .h2,.b3-typography h2,.b3-typography .h3,.b3-typography h3,.b3-typography .h4,.b3-typography h4,.b3-typography .h5,.b3-typography h5,.b3-typography .h6,.b3-typography h6,.protyle-wysiwyg .h1,.protyle-wysiwyg h1,.protyle-wysiwyg .h2,.protyle-wysiwyg h2,.protyle-wysiwyg .h3,.protyle-wysiwyg h3,.protyle-wysiwyg .h4,.protyle-wysiwyg h4,.protyle-wysiwyg .h5,.protyle-wysiwyg h5,.protyle-wysiwyg .h6,.protyle-wysiwyg h6 {
+
+}
+
+.b3-typography .h1, .b3-typography h1, .protyle-wysiwyg .h1, .protyle-wysiwyg h1{
+    margin: 12px 0 8px 0;
+    padding: 0.2em 4px;
+    font-size: 1.75em;
+    border-bottom: 1px solid var(--b3-border-color);
+    color: var(--h1-color);
+}
+
+.b3-typography .h2, .b3-typography h2, .protyle-wysiwyg .h2, .protyle-wysiwyg h2{
+    margin: 12px 0 0 0;
+    padding: 0.1em 4px;
+    font-size: 1.55em;
+    border:none;
+    color: var(--h2-color);
+}
+.b3-typography .h3, .b3-typography h3, .protyle-wysiwyg .h3, .protyle-wysiwyg h3{
+    margin: 10px 0 0 0;
+    font-size: 1.38em;
+    color: var(--h3-color);
+}
+.b3-typography .h4, .b3-typography h4, .protyle-wysiwyg .h4, .protyle-wysiwyg h4{
+    margin: 6px 0 0 0;
+    font-size: 1.25em;
+    color: var(--h4-color);
+}
+.b3-typography .h5, .b3-typography h5, .protyle-wysiwyg .h5, .protyle-wysiwyg h5{
+    /* margin: 6px 0 0 0; */
+    font-size: 1.13em;
+    color: var(--h5-color);
+}
+.b3-typography .h6, .b3-typography h6, .protyle-wysiwyg .h6, .protyle-wysiwyg h6{
+    /* margin: 6px 0 0 0; */
+    font-size: 1em;
+    color: var(--h6-color);
+}
+
+/**** 大纲、列表 ****/
+/* 圆点悬浮时外圈样式 */
+.protyle-wysiwyg [data-node-id].li>.protyle-action:hover:after{
+    opacity: 0.2; /* 圆点悬浮时外圈透明度 */
+}
+
+/* 大纲折叠时样式 */
+.protyle-wysiwyg [data-node-id].li[fold="1"]>.protyle-action:after{
+    background-color: var(--b3-theme-on-surface);
+    opacity: 0.2;
+}
+.protyle-wysiwyg [data-node-id].li[fold="1"]>.protyle-action{
+    color: var(--b3-theme-on-background);
+    transform: scale(1.22);
+    font-weight: bold;
+}
+/* 圆点悬浮时放大效果（折叠时无效果） */
+.protyle-wysiwyg [data-node-id].li:not([fold="1"])>.protyle-action:hover svg, .protyle-wysiwyg [data-node-id].li:not([fold="1"])>.protyle-action:hover:after{
+    transition: all .2s ease-in-out;
+    transform: scale(1.22);
+}
+/* 有序列表数字居中显示 */ 
+.protyle-wysiwyg [data-node-id].li>.protyle-action{
+    text-align: center;   
+}
+
+/* 消除待办事项图标背景色 */
+.protyle-wysiwyg [data-node-id].li[fold="1"]>.protyle-action--task:after, .protyle-wysiwyg [data-node-id].li>.protyle-action--task:hover:after{
+    background: transparent !important;
+}
+
+/* 待办事项已完成的样式 */
+.protyle-task--done>.p, .protyle-task--done>.protyle-action svg{
+    opacity: 0.5;
+    text-decoration: line-through;
+}
+
+
+/**** 引述 ****/
+.b3-typography blockquote, .b3-typography .bq, .protyle-wysiwyg blockquote, .protyle-wysiwyg .bq {
+    border-left: var(--quote-border-width) solid var(--b3-theme-primary);
+    border-color: var(--quote-border-color);
+    color: var(--quote-color);
+    background-color: var(--quote-background);
+    margin:1em 2em 1em 2em ; 
+    padding: 0px 4px;
+    padding-left: 1em ;
+}
+/* 调整引述在超级块中的样式 */
+.protyle-wysiwyg .sb blockquote,  .protyle-wysiwyg .sb .bq{
+    border-left: 3px solid var(--b3-border-color);
+    margin:  var(--allen-block-margin);
+    padding: var(--allen-block-padding);
+}
+
+/**** 代码块 ****/
+.protyle-linenumber__rows{
+    line-height: var(--line-height);
+    font-size: 90%;
+}
+.b3-typography .code-block, .protyle-wysiwyg .code-block{
+    padding: 0;
+    margin: 1em 0;
+}
+
+/**** 表格 ****/
+/* 去除默认背景色 */
+.b3-typography table tbody tr,.protyle-wysiwyg table tbody tr {
+    background: transparent;
+}
+/* 添加行悬浮时背景色 */
+.b3-typography table tr:hover, .protyle-wysiwyg table tr:hover{
+    background-color: var(--b3-theme-surface) !important;
+}
+
+/*********实验功能：毛玻璃效果 代码开始 ******
+1）需要关闭左边栏背景色、背景图功能
+2）
+************
+body{
+    background-color: white;
+    background-image: var(--background-image);
+    background-position: center top;
+	background-size: cover;
+}
+
+.fn__flex-1.fn__flex [data-type='wnd']{
+    background: transparent; 
+    min-height: 90% !important;
+    margin:  10px;
+    padding: 10px;
+    position: relative;    
+    box-shadow: var(--glass-box-shadow);
+	overflow: hidden;
+	z-index: 2;
+	box-sizing: border-box;
+    border-radius: 6px;
+}
+.layout__center .fn__flex-1.fn__flex [data-type='wnd']{
+    margin:  10px auto;
+    padding: 10px 0px;
+    max-width: 1030px;
+}
+
+[data-type='wnd']::before{
+    content: '';
+	position: absolute;
+	top: 0;	left: 0; right: 0;	bottom: 0;
+	z-index: -3;   
+	background-image: var(--background-image);  
+	background-position: center top;
+	background-size: cover;
+	background-attachment: fixed;
+    background:var(--glass-editor-background);
+    backdrop-filter: blur(var(--blur-value));
+}
+
+.layout__center .fn__flex{
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.protyle-background{
+    margin: 10px;
+    border-radius: 8px;
+}
+
+.toolbar,#dockLeft, #dockRight, #dockTop, #dockBottom{
+    background: transparent;
+    border: none;
+    opacity: 0;
+    transition: opacity 400ms ease 0s;
+}
+.toolbar:hover,#dockLeft:hover, #dockRight:hover, #dockTop:hover, #dockBottom:hover{
+    opacity: 1;
+}
+
+.layout__empty, .layout__center .layout-tab-bar, .layout__center .layout-tab-bar .item,
+.protyle-preview,.protyle-preview__action,.graph,
+[data-type='wnd'] .layout-tab-container ,[data-type='wnd'] .protyle,[data-type='wnd'] .protyle-content,[data-type='wnd'] .protyle-wysiwyg,.block__icons,
+.search__label .b3-form__icon-input,
+.b3-dialog__container,.layout__center .protyle-title__input,
+.b3-tab-container,.config-account__center--text,.spread-search__preview,.protyle-breadcrumb,
+.search__header .b3-text-filed--text,.b3-text-filed,
+.b3-dialog__scrim,.b3-menu__item,
+.protyle-toolbar,
+.block__popover,.block__popover .protyle, 
+.protyle-breadcrumb__bar,
+.fn__flex-shrink, .fn__flex-shrink .block__icons,
+.b3-typography table tr, .protyle-wysiwyg table tr{
+    background: transparent !important;
+   
+}
+.b3-menu__item:hover:not(.b3-menu__item--readonly):not(.b3-menu__item--custom), .b3-menu__item--current{
+    background-color: var(--b3-list-hover) !important;
+}
+
+.protyle-preview__action button{
+    background-color:rgba(255, 255, 255, 0.8);
+}
+
+.b3-typography table tr:hover, .protyle-wysiwyg table tr:hover{
+    background-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.protyle-wysiwyg [data-node-id].render-node[data-type="NodeBlockQueryEmbed"]{
+    background-color: rgba(255, 255, 255, 0.5);
+}
+.b3-menu, .protyle-util,.protyle-gutters button{
+    background-color: rgba(255, 255, 255, 0.45); 
+}
+
+.protyle-toolbar,.block__popover,.protyle-breadcrumb__bar,
+.b3-dialog__container,.b3-menu, .protyle-util{ 
+    backdrop-filter: blur(var(--blur-value));
+}
+
+.protyle--fullscreen{
+	background-image:var(--allen-background-image)!important;
+	background-position:center;
+	background-size:cover;
+	background-repeat:no-repeat;    
+}
+.protyle--fullscreen .protyle-content{
+    background: transparent !important;
+    backdrop-filter: blur(var(--blur-value));
+}
+
+/******** 毛玻璃效果实验功能代码结束 ***************/
