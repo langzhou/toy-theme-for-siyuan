@@ -5,7 +5,7 @@
 /****************************************/
 
 /* 引入配色方案 */
-@import url("yinxiang.css");
+@import url("light.css");
 
 
 /************** 一、页面框架与控件 ***********************/
@@ -40,8 +40,8 @@
 
 /* 边栏标题栏 */
 .block__icons{
-    background-color: var(--b3-theme-surface);
-    color: var(--b3-theme-on-surface);
+/*     background-color: var(--b3-theme-surface);
+    color: var(--b3-theme-on-surface); */
 }
 /* 边栏列表项 */
 .b3-list-item, .b3-list-item__text{
@@ -173,7 +173,7 @@ body{
 /* 未开启状态 */
 .b3-switch:after{
     background-color: var(--switch-uncheck-color);
-    border-color: var(--switch-uncheck-color);
+    border-color:     var(--switch-uncheck-color);
 }
 /**** 弹框 ****/
 /* 弹出设置框，如超级链接设置 */
@@ -183,10 +183,6 @@ body{
 
 /**** 反链浮窗 ****/
 /* 实验功能：优化反链浮窗面板的显示样式 */
-.block__popover .protyle-breadcrumb__bar{
-}
-.block__popover .protyle-breadcrumb__bar:hover{
-}
 .block__popover .protyle-breadcrumb:hover .protyle-breadcrumb__item,.block__popover .protyle-breadcrumb:hover .protyle-breadcrumb__arrow{
     opacity: 1; /*悬浮时显示完整面包屑*/
     transition: var(--common-transition);
@@ -228,6 +224,8 @@ body{
 #layouts>.fn__flex-1>.fn__flex-column ::-webkit-scrollbar{ width: 6px;}
 #layouts>.fn__flex-1>.fn__flex-column ::-webkit-scrollbar-thumb{  background-color: var(--column-scrollbar-background); }
 #layouts>.fn__flex-1>.fn__flex-column ::-webkit-scrollbar-thumb:hover{ background-color: var(--column-scrollbar-hover-background); }
+
+
 
 /************** 二、文档编辑区 **************************/
 
@@ -479,6 +477,7 @@ body{
    background-color: var(--b3-theme-primary-lighter);
 }
 /* 样式二 代码结束 */
+
 /**** 超级链接 ****/
 .b3-typography a,.protyle-wysiwyg [data-node-id] span[data-type="a"]{
     color: var(--b3-protyle-inline-link-color);
@@ -512,23 +511,27 @@ body{
     border-radius: 2px;
     padding: 1px 2px;
 }
+
 /**** 行内代码 ****/
 .b3-typography code:not(.hljs), .protyle-wysiwyg code:not(.hljs){
     font-size: 90%;
     margin:  0 1px;
     color: var(--inline-code-color);
 }
+
 /**** KBD ****/
 .b3-typography kbd, .protyle-wysiwyg kbd{
     font-size: 85%;
     margin:  0 1px;
 }
+
 /**** 数学公式 ****/
 
 /**** 图片 ****/
 .b3-typography img, .protyle-wysiwyg img{
     border-radius: 4px;
 }
+
 /**** 标签 ****/
 /* 红色标签 */
 span[data-type="tag"][data-content="紧急"],span[data-type="tag"][data-content="高优先级"],span[data-type="tag"][data-content="待办"],span[data-type="tag"][data-content="重要"],span[data-type="tag"][data-content="高"],span[data-type="tag"][data-content="注意"],span[data-type="tag"][data-content="问题"]{
