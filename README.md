@@ -13,7 +13,7 @@
 - 多种页签栏样式
 
 ### 使用方法
-将`theme.css`中的`@import url("XXX.css")`中的XXX.css 替换成其他的配色文件，目前已提供以下配色文件：
+将`theme.css`中的`@import url("palette/eXXX.css")`中的XXX.css 替换成其他的配色文件，目前已提供以下配色文件：
 - yinxiang.css：仿照印象笔记配色，会自动隐藏顶栏
 - blue.css：蓝色暗调
 - cyan.css：兰色暗调

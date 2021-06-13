@@ -5,7 +5,7 @@
 /****************************************/
 
 /* 引入配色方案 */
-@import url("light.css");
+@import url("palette/blue.css");
 
 
 /************** 一、页面框架与控件 ***********************/
@@ -407,10 +407,7 @@ body{
     margin: 0.625em 0;
 }
 /**** 块属性 ****/
-/* 备注 */
-.protyle-attr--memo{
-    width: inherit; /* 展示备注信息 */
-}
+
 /**** 全屏模式 ****/
 /**** 预览模式 ****/
 .protyle-preview__action{
@@ -669,6 +666,14 @@ span[data-type="tag"][data-content="完成"],span[data-type="tag"][data-content=
 }
 /**** 嵌入块 ****/
 
+/* iframe */
+.b3-typography iframe, .protyle-wysiwyg iframe{
+    border-color: transparent;
+}
+.b3-typography iframe:hover, .protyle-wysiwyg iframe:hover{
+    /* border-color: var(--b3-border-color); */
+}
+
 /**** 标题 ****/
 .b3-typography .h1,.b3-typography h1,.b3-typography .h2,.b3-typography h2,.b3-typography .h3,.b3-typography h3,.b3-typography .h4,.b3-typography h4,.b3-typography .h5,.b3-typography h5,.b3-typography .h6,.b3-typography h6,.protyle-wysiwyg .h1,.protyle-wysiwyg h1,.protyle-wysiwyg .h2,.protyle-wysiwyg h2,.protyle-wysiwyg .h3,.protyle-wysiwyg h3,.protyle-wysiwyg .h4,.protyle-wysiwyg h4,.protyle-wysiwyg .h5,.protyle-wysiwyg h5,.protyle-wysiwyg .h6,.protyle-wysiwyg h6 {
 
@@ -731,10 +736,6 @@ span[data-type="tag"][data-content="完成"],span[data-type="tag"][data-content=
     transition: all .2s ease-in-out;
     transform: scale(1.22);
 }
-/* 有序列表数字居中显示 */ 
-.protyle-wysiwyg [data-node-id].li>.protyle-action{
-    text-align: center;   
-}
 
 /* 消除待办事项图标背景色 */
 .protyle-wysiwyg [data-node-id].li[fold="1"]>.protyle-action--task:after, .protyle-wysiwyg [data-node-id].li>.protyle-action--task:hover:after{
@@ -787,7 +788,6 @@ span[data-type="tag"][data-content="完成"],span[data-type="tag"][data-content=
 
 /*********实验功能：毛玻璃效果 代码开始 ******
 1）需要关闭左边栏背景色、背景图功能
-2）
 ************
 body{
     background-color: white;
