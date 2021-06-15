@@ -144,7 +144,7 @@
     --caret-color:                  var(--b3-theme-primary); /* 光标颜色 */
     --text-selection-background:    var(--b3-theme-primary-lightest); /* 文本选中背景色 */
     --text-selection-color:         inherit; /* 文本选中颜色 */
-    --inline-code-color:            inherit; /* 行内代码文字颜色 */
+    --inline-code-color:            var(--b3-theme-primary); /* 行内代码文字颜色 */
     --quote-border-width:           3px; /* 引述左边框宽度 */
     --quote-border-color:           #adbbc9;    /* 引述左边框颜色 */
     --quote-color:                  #7b8490; /* 引述文字颜色 */

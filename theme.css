@@ -541,7 +541,7 @@ span[data-type="tag"][data-content="紧急"],span[data-type="tag"][data-content=
     border-radius: 2px;
 }
 /* 橙色标签 */
-span[data-type="tag"][data-content="TODO"],span[data-type="tag"][data-content="todo"],span[data-type="tag"][data-content="待办"],span[data-type="tag"][data-content="中"],span[data-type="tag"][data-content="中优先级"],span[data-type="tag"][data-content="NOTE"]{
+span[data-type="tag"][data-content="TODO"],span[data-type="tag"][data-content="todo"],span[data-type="tag"][data-content="待办"],span[data-type="tag"][data-content="中"],span[data-type="tag"][data-content="中优先级"],span[data-type="tag"][data-content="NOTE"],span[data-type="tag"][data-content="提示"]{
     background-color: var(--b3-card-warning-background);
     color: var(--b3-card-warning-color) !important;
     border: none !important;
@@ -596,7 +596,7 @@ span[data-type="tag"][data-content="完成"],span[data-type="tag"][data-content=
     content: "";
     background-color: var(--b3-theme-on-background);
     width:  12px;
-    height: var(--line-height);
+    height: var(--line-height) ;
     position: absolute;
     left:   4px;
     top:    var(--padding-top-bottom);
@@ -652,7 +652,7 @@ span[data-type="tag"][data-content="完成"],span[data-type="tag"][data-content=
 .b3-typography p, .b3-typography [data-node-id], .protyle-wysiwyg p, .protyle-wysiwyg [data-node-id]{
     margin:      var(--block-margin);
     padding:     var(--block-padding);
-    line-height: var(--line-height);
+    line-height: var(--line-height) !important;
 }
 
 /**** 超级块、横排 ****/
@@ -728,7 +728,7 @@ span[data-type="tag"][data-content="完成"],span[data-type="tag"][data-content=
 }
 .protyle-wysiwyg [data-node-id].li[fold="1"]>.protyle-action{
     color: var(--b3-theme-on-background);
-    transform: scale(1.22);
+    transform: scale(1.1);
     font-weight: bold;
 }
 /* 圆点悬浮时放大效果（折叠时无效果） */
