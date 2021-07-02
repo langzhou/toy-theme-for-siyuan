@@ -147,7 +147,7 @@ body{
     box-shadow: var(--b3-point-shadow);
     margin: 2px;
     border: none !important;
-    border-radius: 2px !important;
+    border-radius: 4px !important;
 }
 /* 菜单中文字描述 */
 .b3-menu__item--readonly{
@@ -390,23 +390,100 @@ body{
     color: var(--b3-theme-primary);
 }
 .protyle-gutters button{
-    padding: 2px 0 0 0;
+    /* padding: 2px 0 0 0;
     width: 20px;
     height: 20px;
     border-radius: 3px;
     margin-left:  3px;
-    line-height: 20px;
-    background-color: var(--b3-theme-background); /* 强制块图标使用背景色，以避免在超级块等场景下显示不清楚 */
+    line-height: 20px; */
+    /* background-color: var(--b3-theme-background);  */
+    /* 强制块图标使用背景色，以避免在超级块等场景下显示不清楚 */
 }
 .protyle-gutters:hover button {
-    background-color: var(--gutters-hover-background); /* 采用非透明色，避免在超级块等场景下显示不清楚 */
+    /* background-color: var(--gutters-hover-background);  */
+    /* 采用非透明色，避免在超级块等场景下显示不清楚 */
 }
 
 /* 调整设置行高后的块图标整体位置偏移 */
 .protyle-gutters{
-    margin: 0.625em 0;
+    /* margin: 0.625em 0; */
 }
 /**** 块属性 ****/
+/* 将页面（标题）的属性移至左侧 */
+.protyle-title .protyle-attr{
+    left: 0;
+}
+
+/* 自定义属性 */
+/* 日期 */
+[data-type="tag"][data-content^="@"]{
+    border-radius: 30px;
+    background-color: var(--b3-border-color);
+    padding: 1px 8px;
+    border-bottom: none !important;
+    font-size: 95%;
+}
+/* 待办事项 */
+[custom-lz-todo] > div[contenteditable="true"]:first-child::after{
+    padding:1px 8px;
+    border-radius: 30px;
+    font-size: 90%;
+    margin:0 2px;
+}
+[custom-lz-todo="todo"] > div[contenteditable="true"]:first-child::after{
+    content: "@todo";
+    background-color: var(--b3-card-info-background);
+    color: var(--b3-card-info-color);
+}
+[custom-lz-todo="inbox"] > div[contenteditable="true"]:first-child::after{
+    content: "@Inbox";
+    background-color: var(--b3-card-info-background);
+    color: var(--b3-card-info-color);
+}
+[custom-lz-todo="someday"] > div[contenteditable="true"]:first-child::after{
+    content: "@Someday";
+    background-color: var(--b3-card-info-background);
+    color: var(--b3-card-info-color);
+}
+[custom-lz-todo="doing"] > div[contenteditable="true"]:first-child::after{
+    content: "@Doing";
+    background-color: var(--b3-card-warning-background);
+    color: var(--b3-card-warning-color);
+}
+[custom-lz-todo="done"] > div[contenteditable="true"]:first-child::after{
+    content: "@Done";
+    background-color: var(--b3-card-success-background);
+    color: var(--b3-card-success-color);
+}
+
+/* 优先级 */
+[custom-lz-priority] > div[contenteditable="true"]:first-child::before{
+    padding:1px 6px;
+    border-radius: 3px;
+    font-size: 90%;
+    margin:0 2px;
+}
+[custom-lz-priority="P0"] > div[contenteditable="true"]:first-child::before{
+    content: "P0";
+    background-color: var(--b3-card-error-background);
+    color: var(--b3-card-error-color);
+}
+[custom-lz-priority="P1"] > div[contenteditable="true"]:first-child::before{
+    content: "P1";
+    background-color: var(--b3-card-error-background);
+    color: var(--b3-card-error-color);
+}
+[custom-lz-priority="P2"] > div[contenteditable="true"]:first-child::before{
+    content: "P2";
+    background-color: var(--b3-card-warning-background);
+    color: var(--b3-card-warning-color);
+}
+[custom-lz-priority="P3"] > div[contenteditable="true"]:first-child::before{
+    content: "P3";
+    background-color: var(--b3-card-success-background);
+    color: var(--b3-card-success-color);
+}
+
 
 /**** 全屏模式 ****/
 /**** 预览模式 ****/
@@ -576,6 +653,12 @@ span[data-type="tag"][data-content="完成"],span[data-type="tag"][data-content=
 .protyle-wysiwyg [style*="background-color"] span[data-type="block-ref"]{
     color: inherit;
     border-color: inherit;
+ }
+/* 颜色卡片内的超级链接字体颜色与卡片保持一致，并添加下划线 */
+ .protyle-wysiwyg [style*="background-color"][data-node-id] span[data-type="a"]{
+    color: inherit;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
  }
  /* 颜色卡片内的圆点颜色与卡片保持一致 */
 .protyle-wysiwyg [data-node-id][style*="background-color"] .protyle-action {

@@ -19,3 +19,5 @@
 - cyan.css：兰色暗调
 - light.css：亮色配色模板，可修改此文件创建自己的配色方案
 - dark.css：深色配色模板，可修改此文件创建自己的配色方案
+- green.css：护眼主题
+- 四季主题：spring.css、autumn.css、winter.css

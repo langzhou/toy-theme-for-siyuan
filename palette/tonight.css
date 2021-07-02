@@ -166,7 +166,7 @@
     --h6-color: inherit;
 
     /**** 设置 ****/
-    --dock-border:                  1px solid var(--b3-border-color); /* 顶栏、dock、页签栏边框 */
+    --dock-border:                  0px solid var(--b3-border-color); /* 顶栏、dock、页签栏边框 */
     --column-border:                transparent; /* 分栏分割线 */
     --line-height:                  1.75em; /* 行高 */
     --margin-top-bottom:            2px;    /* 上下 margin */
@@ -184,4 +184,13 @@
     --page-scrollbar-transition: opacity 800ms ease 0s; /* 分页加载条动画 */
     --flex-column-transition:    width 200ms cubic-bezier(0, 0.7, 0.4, 1); /* 侧边栏动画 */
     --common-transition:         all 1s cubic-bezier(0, 0.7, .2, 1) 0ms;   /* 通用动画 */
+}
+
+/* 调整背景色设置时的字体颜色 */
+strong[style*="background-color: var(--b3-font-background1)"],
+strong[style*="background-color: var(--b3-font-background2)"],
+strong[style*="background-color: var(--b3-font-background3)"],
+strong[style*="background-color: var(--b3-font-background4)"],
+strong[style*="background-color: var(--b3-font-background13)"]{
+    color:#333 !important; 
 }

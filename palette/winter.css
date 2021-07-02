@@ -15,7 +15,7 @@
     --b3-theme-on-primary:   #fff; /* 主色调上的文字颜色 */
     --b3-theme-on-secondary: #fff;
     --b3-theme-on-background:#444444; /* 编辑器上的文字颜色 */
-    --b3-theme-on-surface:   #666666; /* 分栏、面板上的文字颜色 */
+    --b3-theme-on-surface:   rgba(25, 23, 17, 0.6); /* 分栏、面板上的文字颜色 */
     --b3-theme-on-error:     #fff;
 
     
@@ -187,3 +187,8 @@
 
 }
 
+/**** 特殊样式 ****/
+/* 工具栏选中状态 */
+.protyle-toolbar__item--current{
+    color: rgba(45, 170, 219, 1);
+}
