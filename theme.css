@@ -424,61 +424,61 @@ body{
     font-size: 95%;
 }
 /* 待办事项 */
-[custom-lz-todo] > div[contenteditable="true"]:first-child::after{
+[custom-lz-todo]  div[contenteditable="true"]:first-child::after{
     padding:1px 8px;
     border-radius: 30px;
     font-size: 90%;
     margin:0 2px;
 }
-[custom-lz-todo="todo"] > div[contenteditable="true"]:first-child::after{
+[custom-lz-todo="todo"]  div[contenteditable="true"]:first-child::after{
     content: "@todo";
     background-color: var(--b3-card-info-background);
     color: var(--b3-card-info-color);
 }
-[custom-lz-todo="inbox"] > div[contenteditable="true"]:first-child::after{
+[custom-lz-todo="inbox"]  div[contenteditable="true"]:first-child::after{
     content: "@Inbox";
     background-color: var(--b3-card-info-background);
     color: var(--b3-card-info-color);
 }
-[custom-lz-todo="someday"] > div[contenteditable="true"]:first-child::after{
+[custom-lz-todo="someday"]  div[contenteditable="true"]:first-child::after{
     content: "@Someday";
     background-color: var(--b3-card-info-background);
     color: var(--b3-card-info-color);
 }
-[custom-lz-todo="doing"] > div[contenteditable="true"]:first-child::after{
+[custom-lz-todo="doing"]  div[contenteditable="true"]:first-child::after{
     content: "@Doing";
     background-color: var(--b3-card-warning-background);
     color: var(--b3-card-warning-color);
 }
-[custom-lz-todo="done"] > div[contenteditable="true"]:first-child::after{
+[custom-lz-todo="done"]  div[contenteditable="true"]:first-child::after{
     content: "@Done";
     background-color: var(--b3-card-success-background);
     color: var(--b3-card-success-color);
 }
 
 /* 优先级 */
-[custom-lz-priority] > div[contenteditable="true"]:first-child::before{
+[custom-lz-priority]  div[contenteditable="true"]:first-child::before{
     padding:1px 6px;
     border-radius: 3px;
     font-size: 90%;
     margin:0 2px;
 }
-[custom-lz-priority="P0"] > div[contenteditable="true"]:first-child::before{
+[custom-lz-priority="P0"]  div[contenteditable="true"]:first-child::before{
     content: "P0";
     background-color: var(--b3-card-error-background);
     color: var(--b3-card-error-color);
 }
-[custom-lz-priority="P1"] > div[contenteditable="true"]:first-child::before{
+[custom-lz-priority="P1"]  div[contenteditable="true"]:first-child::before{
     content: "P1";
     background-color: var(--b3-card-error-background);
     color: var(--b3-card-error-color);
 }
-[custom-lz-priority="P2"] > div[contenteditable="true"]:first-child::before{
+[custom-lz-priority="P2"]  div[contenteditable="true"]:first-child::before{
     content: "P2";
     background-color: var(--b3-card-warning-background);
     color: var(--b3-card-warning-color);
 }
-[custom-lz-priority="P3"] > div[contenteditable="true"]:first-child::before{
+[custom-lz-priority="P3"]  div[contenteditable="true"]:first-child::before{
     content: "P3";
     background-color: var(--b3-card-success-background);
     color: var(--b3-card-success-color);
