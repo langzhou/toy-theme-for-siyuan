@@ -5,7 +5,7 @@
 /****************************************/
 
 /* 引入配色方案 */
-@import url("palette/yinxiang.css");
+@import url("palette/winter.css");
 
 
 /************** 一、页面框架与控件 ***********************/
@@ -346,6 +346,9 @@ body{
 /* 样式 3 代码结束 */
 
 /**** 面包屑 ****/
+.protyle-breadcrumb .fn__flex-shrink{
+    background-color: var(--b3-theme-background);
+}
 /* 设置编辑区的面包屑样式，浮窗中的面包屑不受影响 */
 /* 样式 1：透明背景 *
 .layout__center .protyle-breadcrumb{
@@ -525,6 +528,10 @@ body{
     background-color: transparent;
 }
 
+/* 隐藏空白行的提示文字 */
+.protyle-wysiwyg [data-node-id] [spellcheck="false"]:focus:empty:after {
+    content: '';
+}
 /************** 三、编辑器行内样式 ***********************/
 
 /**** 双向链接、块引用 ****/
