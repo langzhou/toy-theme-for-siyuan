@@ -5,7 +5,7 @@
 /****************************************/
 
 /* 引入配色方案 */
-@import url("palette/winter.css");
+@import url("palette/yinxiang.css");
 
 
 /************** 一、页面框架与控件 ***********************/
@@ -47,7 +47,9 @@
 .b3-list-item, .b3-list-item__text{
     color: var(--b3-theme-on-surface);
 }
-
+.file-tree [data-type="navigation-file"] .b3-list-item__text{
+    opacity: 1;
+}
 /* 边栏搜索 */
 .search__label .b3-form__icon-input{
     background-color: var(--b3-theme-surface);
@@ -56,6 +58,7 @@
 .layout__resize--lr:after{
     background-color: var(--column-border);
 }
+
 
 /* 左边栏 */
 /**** 实验功能：左边栏背景色 ****
@@ -427,61 +430,61 @@ body{
     font-size: 95%;
 }
 /* 待办事项 */
-[custom-lz-todo]  div[contenteditable="true"]:first-child::after{
+[custom-lz-todo] div[contenteditable="true"]::after{
     padding:1px 8px;
     border-radius: 30px;
     font-size: 90%;
     margin:0 2px;
 }
-[custom-lz-todo="todo"]  div[contenteditable="true"]:first-child::after{
+[custom-lz-todo="todo"]> div[contenteditable="true"]:first-child::after,[custom-lz-todo="todo"].li > .p div:first-child::after,[custom-lz-todo="todo"].list>.li:first-child> .p div:first-child::after{
     content: "@todo";
     background-color: var(--b3-card-info-background);
     color: var(--b3-card-info-color);
 }
-[custom-lz-todo="inbox"]  div[contenteditable="true"]:first-child::after{
+[custom-lz-todo="inbox"]> div[contenteditable="true"]:first-child::after,[custom-lz-todo="inbox"].li > .p div:first-child::after,[custom-lz-todo="inbox"].list>.li:first-child> .p div:first-child::after{
     content: "@Inbox";
     background-color: var(--b3-card-info-background);
     color: var(--b3-card-info-color);
 }
-[custom-lz-todo="someday"]  div[contenteditable="true"]:first-child::after{
+[custom-lz-todo="someday"]> div[contenteditable="true"]:first-child::after,[custom-lz-todo="someday"].li > .p div:first-child::after,[custom-lz-todo="someday"].list>.li:first-child> .p div:first-child::after{
     content: "@Someday";
     background-color: var(--b3-card-info-background);
     color: var(--b3-card-info-color);
 }
-[custom-lz-todo="doing"]  div[contenteditable="true"]:first-child::after{
+[custom-lz-todo="doing"]> div[contenteditable="true"]:first-child::after,[custom-lz-todo="doing"].li > .p div:first-child::after,[custom-lz-todo="doing"].list>.li:first-child> .p div:first-child::after{
     content: "@Doing";
     background-color: var(--b3-card-warning-background);
     color: var(--b3-card-warning-color);
 }
-[custom-lz-todo="done"]  div[contenteditable="true"]:first-child::after{
+[custom-lz-todo="done"]> div[contenteditable="true"]:first-child::after,[custom-lz-todo="done"].li > .p div:first-child::after,[custom-lz-todo="done"].list>.li:first-child> .p div:first-child::after{
     content: "@Done";
     background-color: var(--b3-card-success-background);
     color: var(--b3-card-success-color);
 }
 
 /* 优先级 */
-[custom-lz-priority]  div[contenteditable="true"]:first-child::before{
+[custom-lz-priority]  div[contenteditable="true"]::before{
     padding:1px 6px;
     border-radius: 3px;
     font-size: 90%;
     margin:0 2px;
 }
-[custom-lz-priority="P0"]  div[contenteditable="true"]:first-child::before{
+[custom-lz-priority="P0"]> div[contenteditable="true"]:first-child::before,[custom-lz-priority="P0"].li > .p div:first-child::before,[custom-lz-priority="P0"].list>.li:first-child> .p div:first-child::before{
     content: "P0";
     background-color: var(--b3-card-error-background);
     color: var(--b3-card-error-color);
 }
-[custom-lz-priority="P1"]  div[contenteditable="true"]:first-child::before{
+[custom-lz-priority="P1"]> div[contenteditable="true"]:first-child::before,[custom-lz-priority="P1"].li > .p div:first-child::before,[custom-lz-priority="P1"].list>.li:first-child> .p div:first-child::before{
     content: "P1";
     background-color: var(--b3-card-error-background);
     color: var(--b3-card-error-color);
 }
-[custom-lz-priority="P2"]  div[contenteditable="true"]:first-child::before{
+[custom-lz-priority="P2"]> div[contenteditable="true"]:first-child::before,[custom-lz-priority="P2"].li > .p div:first-child::before,[custom-lz-priority="P2"].list>.li:first-child> .p div:first-child::before{
     content: "P2";
     background-color: var(--b3-card-warning-background);
     color: var(--b3-card-warning-color);
 }
-[custom-lz-priority="P3"]  div[contenteditable="true"]:first-child::before{
+[custom-lz-priority="P3"]> div[contenteditable="true"]:first-child::before,[custom-lz-priority="P3"].li > .p div:first-child::before,[custom-lz-priority="P3"].list>.li:first-child> .p div:first-child::before{
     content: "P3";
     background-color: var(--b3-card-success-background);
     color: var(--b3-card-success-color);
