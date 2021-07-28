@@ -191,10 +191,11 @@
  1）需要将 min-height 和 min-width 设置成自己电脑全屏时的分辨率
  2）如果需要鼠标悬浮时显示，请将.toolbar{height:0px;}设置为一个较小的高度值，如 8px
 ****/
-@media only screen and (min-height: 900px) and (min-width: 1440px)
+/* @media only screen and (min-height: 900px) and (min-width: 1440px)
 {
     .toolbar{ height: 0px; transition: height 400ms ease 0s; }
     .toolbar > div{  visibility: hidden; }
     .toolbar:hover{  height: 30px; transition: height 400ms ease 0s; }
     .toolbar:hover >div{  visibility: visible; }
 }
+ */
